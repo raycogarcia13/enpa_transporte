@@ -1,0 +1,19 @@
+version: '3'
+services:
+  api:
+    container_name: enpa
+    restart: always
+    build: .
+    ports:
+      - '3000:3000'
+    links:
+      - database
+    volumes:
+      - '.:/opt/enpa'
+  database:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - '27018:27017'
+    logging:
+      driver: none
