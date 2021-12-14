@@ -1,8 +1,8 @@
-const Config = require('../models/Aisco');
+const Departamento = require('../models/Departamento');
 
 exports.init = async (req,res,next) =>{
-    const config = await Config.findOne({key:"database"});
-    if(config && config.value == "true"){
+    const config = await Departamento.find();
+    if(config.length>0){
         res.json({
             status:"failed",
             message:"Project is alredy config"
