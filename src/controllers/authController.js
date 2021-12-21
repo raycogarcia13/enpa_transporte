@@ -9,7 +9,7 @@ exports.login =  catchAsyncErrors(async (req,res,next) =>{
     if(!email || !password)
         return next(new ErrorHandler('auth.empty',400))
 
-    let user = await User.findOne({email}).select('+password')
+    let user = await User.findOne({username}).select('+password')
 
     if(!user)
         return next(new ErrorHandler('auth.error',401))
@@ -23,7 +23,7 @@ exports.login =  catchAsyncErrors(async (req,res,next) =>{
         return next(new ErrorHandler(`auth.status.${user.status}`,401))
 
     
-    user = await User.findOne({email});
+    user = await User.findOne({username});
     sendToken(user, res);
 })
 

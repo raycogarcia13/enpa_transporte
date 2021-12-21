@@ -13,10 +13,24 @@ const seedDepartmens = async ()=>{
         return false;
     }
 }
+const seedUsers = async ()=>{
+    console.log('running users seeder')
+    try{
+        const Model = require("../models/Users");
+        const datas = require('../data/users');
+        await Model.deleteMany();
+        await Model.insertMany(datas);
+        return true;
+    }catch(error){
+        console.log('error',error);
+        return false;
+    }
+}
 
 // seeders activos
 const seeders =[
-    seedDepartmens
+    seedDepartmens,
+    seedUsers
 ]
 
 // run all seeders

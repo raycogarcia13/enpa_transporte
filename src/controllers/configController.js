@@ -12,11 +12,6 @@ exports.init = async (req,res,next) =>{
         const {init} = require("../utils/seeder");
         let status = await init();
         if(status){
-            const data = {  key:"database", value:"true" }
-            await Config.findOneAndUpdate({key:"database"},data,{
-                new:true,
-                upsert:true
-            })
             res.json({
                 status:"success",
                 message:"Database filed!!!"

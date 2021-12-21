@@ -24,13 +24,12 @@ exports.store = catchAsyncErrors(async (req,res,next) =>{
 
 //get all => /api/v1/product?keyword=standard
 exports.get = catchAsyncErrors(async (req,res,next) =>{
-    // const all = await Solicitud.find({user:req.user._id})
-    //         .populate({path:'contacts',populate:{path:'contact'}});
-    // res.json({
-    //     status:"success",
-    //     count: all.length,
-    //     data: all
-    // })
+    const all = await Solicitud.find().populate('departamento')
+    res.json({
+        status:"success",
+        count: all.length,
+        data: all
+    })
 })
 
 // // get one product by id : /api/v1/diameter/:id 

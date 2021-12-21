@@ -21,8 +21,9 @@ const dataSchema = new Schema({
         select: false
     },
     rol:{
-       type: Types.ObjectId, ref: 'Rol',
-       required: [true,'use.rol.required']
+        type: String,
+        default: 'Usuario',
+        enum: ['Usuario', 'Administrador']
     }
 });
 
